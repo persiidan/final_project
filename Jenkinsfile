@@ -8,7 +8,6 @@ pipeline {
             environment {
                 DOCKER_HUB_CREDENTIALS = credentials('77d52e95-32bd-4d7c-ab61-b1434b398e11')  // Use the ID of the combined credential
                 GITHUB_REPO_URL = 'https://github.com/persiidan/final_project.git'  // Replace with your GitHub repository URL
-                DOCKERFILE_PATH = 'Dockerfile'  // Specify the path to your Dockerfile in the repository
                 IMAGE_NAME = 'idanpersi/sela_final_project:latest'  // Specify your Docker Hub image name and tag
             }
  
@@ -16,7 +15,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github_creds', url: "${GITHUB_REPO_URL}"]]])
+                    checkout([$class: 'GitSCM', branches: [[name: 'main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github_creds', url: "${GITHUB_REPO_URL}"]]])
 
                     sh "docker build -t ${IMAGE_NAME} ."
                     
