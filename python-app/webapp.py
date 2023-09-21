@@ -8,7 +8,6 @@ client = MongoClient('mongodb://root:3yGWpZ7jeS@34.78.116.136:27017/')  # Replac
 db = client['persi_project']  # Replace with your database name
 collection = db['links']  # Replace with your collection name
 
-
 @app.template_filter('zip_lists')
 def zip_lists(a, b):
     return zip(a, b)
@@ -26,4 +25,4 @@ def index():
     return render_template('index.html', links=links, labels=labels)
 
 if __name__ == '__main__':
-     app.run(host="0.0.0.0",port=5000,debug=True)
+     app.run(host="0.0.0.0",port=6969,debug=True)
