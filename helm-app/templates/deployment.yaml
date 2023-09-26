@@ -1,13 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: py-app-deployment
+  name: py-app
 spec:
   replicas: 2  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: py-app
   template:
+    metadata:
+      labels:
+        app: py-app
     spec:
       containers:
-      - name: py-app-container
+      - name: py-app
         image: idanpersi/sela_final_project:latest  # Specify your Docker image
         ports:
         - containerPort: 6969  # Port your Flask app is listening on
