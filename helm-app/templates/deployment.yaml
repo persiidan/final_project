@@ -2,17 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: py-app-deployment
-  labels:
-    app: py-app
 spec:
-  replicas: 3  # Number of desired replicas
-  selector:
-    matchLabels:
-      app: py-app
+  replicas: 2  # Number of desired replicas
   template:
-    metadata:
-      labels:
-        app: py-app
     spec:
       containers:
       - name: py-app-container
