@@ -3,7 +3,7 @@ kind: Pod
 spec:
   containers:
   - name: dind
-    image: ezezeasy/ez-docker-helm-build:1.41
+    image: drpsychick/dind-buildx-helm:latest
     alwaysPull: true
     securityContext:
       privileged: true
