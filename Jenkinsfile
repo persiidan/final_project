@@ -20,9 +20,11 @@ pipeline {
             steps {
                   container('dind') {
                                   script {
+                                          echo "started building image...."
                                           sh 'dockerd &'
                                           sh 'sleep 5'
                                           sh "docker build -t ${IMAGE_NAME} ."
+                                        echo "finished"
                                   }
                         }
                     }
