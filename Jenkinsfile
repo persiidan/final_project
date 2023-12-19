@@ -23,7 +23,7 @@ pipeline {
                                           echo "started building image...."
                                           sh 'dockerd &'
                                           sh 'sleep 8'
-                                          sh "docker build -t ${IMAGE_NAME} ."
+                                          sh "docker build -t ${IMAGE_NAME} . alwaysPull true"
                                         echo "finished"
                                   }
                         }
