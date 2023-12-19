@@ -15,9 +15,9 @@ pipeline {
             steps {
                   container('dind') {
                                   script {
-                                          git credentialsId: 'persi_git_hub_creds', url: ${GITHUB_REPO_URL}, branch: 'main'
+                                          checkout([$class: 'GitSCM', branches: [[name: 'main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'persi_git_hub_creds', url: "${GITHUB_REPO_URL}"]]])
                                           sh "docker build -t ${IMAGE_NAME} ."
-                                          withCredentials([usernamePassword(credentialsId: 'persi_dockerhub_creds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                                          withCredentials([usernamePassword(credentialsId: 'persi_docker_hub_creds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                                           sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
                                               // Push the Docker image to Docker Hub
                                           sh "docker push ${IMAGE_NAME}"
