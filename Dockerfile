@@ -16,4 +16,4 @@ RUN pip install -r requirements.txt
 EXPOSE 6969
 
 # Specify the command to run your Python web application
-CMD ["python", "./python-app/webapp.py", "&"] 
+CMD ["python", "./python-app/webapp.py"] 
