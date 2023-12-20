@@ -6,7 +6,7 @@ app = Flask(__name__)
 local = Local()
 
 # MongoDB connection setup
-client = MongoClient('mongodb://root:3yGWpZ7jeS@34.78.116.136:27017/')  # Replace with your MongoDB connection URI
+client = MongoClient('mongodb://root:irKUTs5Dx3@34.38.131.39:27017/')  # Replace with your MongoDB connection URI
 db = client['persi_project']  # Replace with your database name
 collection = db['links']  # Replace with your collection name
 
