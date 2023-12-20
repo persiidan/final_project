@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: py-app
-        image: idanpersi/sela_final_project:latest  # Specify your Docker image
+        image: guyashkenazi/profile-app  # Specify your Docker image
         ports:
         - containerPort: 6969  # Port your Flask app is listening on
