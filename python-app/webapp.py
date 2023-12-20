@@ -1,7 +1,9 @@
 from flask import Flask, render_template
 from pymongo import MongoClient
+from werkzeug.local import Local
 
 app = Flask(__name__)
+local = Local()
 
 # MongoDB connection setup
 client = MongoClient('mongodb://root:3yGWpZ7jeS@34.78.116.136:27017/')  # Replace with your MongoDB connection URI
@@ -14,8 +16,10 @@ def zip_lists(a, b):
 
 @app.route('/')
 def index():
+    # Using Werkzeug Local for thread-local storage
+    local.my_data = "This is thread-local data"
 
-   # Retrieve links from MongoDB
+    # Retrieve links from MongoDB
     links = collection.find_one()['links']
     
     # Define labels for the links
@@ -25,4 +29,4 @@ def index():
     return render_template('index.html', links=links, labels=labels)
 
 if __name__ == '__main__':
-     app.run(host="0.0.0.0",port=6969,debug=True)
+     app.run(host="0.0.0.0", port=6969, debug=True)
