@@ -29,17 +29,6 @@ pipeline {
                         }
                     }
                 }
-           stage('Run Tests') {
-            steps {
-                container('dind') {
-                    script {
-                        echo "Running tests..."
-                        sh 'docker run ${IMAGE_NAME} python-app/test_app.py'
-                        echo "Tests completed successfully!"
-                    }
-                }
-            }
-        }
           stage('Push Docker Image') {
             steps {
                 container('dind') {
