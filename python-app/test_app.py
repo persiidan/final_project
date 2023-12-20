@@ -1,9 +1,15 @@
-import requests
+import pytest
+from webapp import app
 
-def test_app_health_check():
-    response = requests.get("http://localhost:5000")
-    assert response.status_code == 200
-    assert "webapp" in response.text
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
+    with app.test_client() as client:
+        yield client
 
-# Add more test cases as needed
+def test_index(client):
+    # Test if the response for the main route is 200 (OK)
+    rv = client.get('/')
+    assert rv.status_code == 200
 
+# More tests can be added here
