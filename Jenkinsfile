@@ -34,7 +34,7 @@ pipeline {
                 container('dind') {
                     script {
                         echo "Running tests..."
-                        sh 'docker run ${IMAGE_NAME} ./python-app/test_app.py'
+                        sh 'docker run ${IMAGE_NAME} python-app/test_app.py'
                         echo "Tests completed successfully!"
                     }
                 }
